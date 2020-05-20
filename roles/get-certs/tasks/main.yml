@@ -16,9 +16,9 @@
 - name: Get certs
   vars:
     domains:
-      - hoge.nyoho.jp
-      - fuga.nyoho.jp
-    letsencrypt_email: algebraicallyClosedField@gmail.com
+      - hoge.example.net
+      - fuga.example.net
+    letsencrypt_email: me@example.net
 
   include_tasks: getting-cert.yml
   loop: "{{ domains }}"
