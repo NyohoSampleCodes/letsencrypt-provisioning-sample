@@ -4,17 +4,12 @@ A sample to provision Lets' Encrypt for Nginx on Ubuntu 18.04 by Ansible 2.9.
 
 Ubuntu 18.04 に Ansible で Let's Encrypt を設定するサンプル。
 
-** Strategy 方法
+** Strategy
 1. Put a configuration only to get certificates with certbot
 2. Do certbot with webroot
 3. Then change the configuration to a configuration with SSL
 
-1. 一旦 certbot で証明書を取得するためだけの nginx 設定ファイルを設定する
-2. その状態で nginx を立ち上げて webroot で certbot する
-3. その後で SSL 設定付きの nginx 設定ファイルを書き込む
-
-
-** Usage 使い方
+** Usage
 
 Write your machine name or an ip address to =hosts=.
 
@@ -35,7 +30,13 @@ And then do ~ansible-playbook~.
 ansible-playbook -i hosts site.yml
 #+end_src
 
+** 方法
+1. 一旦 certbot で証明書を取得するためだけの nginx 設定ファイルを設定する
+2. その状態で nginx を立ち上げて webroot で certbot する
+3. その後で SSL 設定付きの nginx 設定ファイルを書き込む
 
+
+** 使い方
 
 =hosts= ファイルにプロビジョニングしたいマシンを書き込みます。
 
