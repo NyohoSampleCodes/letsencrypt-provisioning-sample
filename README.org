@@ -1,0 +1,30 @@
+#+title: Let's Encrypt provisioning sample
+
+Ubuntu 18.04 に Ansible で Let's Encrypt を設定するサンプル
+
+** 方法
+1. 一旦 certbot で証明書を取得するためだけの nginx 設定ファイルを設定する
+2. その状態で nginx を立ち上げて webroot で certbot する
+3. その後で SSL 設定付きの nginx 設定ファイルを書き込む
+
+
+** 使い方
+
+=hosts= ファイルにプロビジョニングしたいマシンを書き込みます。
+
+=./roles/get-certs/tasks/main.yml= の中にある次の ~domains~ というリストを必要な分だけ書きます。 ~letsencrypt_email~ にメールアドレスも設定します。
+
+#+begin_src yaml
+- name: Get certs
+  vars:
+    domains:
+      - hoge.example.net
+      - fuga.example.net
+    letsencrypt_email: me@example.net
+#+end_src
+
+そして ~ansible-playbook~ します。
+
+#+begin_src sh
+ansible-playbook -i hosts site.yml
+#+end_src
